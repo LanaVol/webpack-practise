@@ -25,6 +25,7 @@ module.exports = {
     new CleanWebpackPlugin(),
   ],
   module: {
+    // масив об'єктів-лоадерів
     rules: [
       {
         test: /\.css$/,
