@@ -7,3 +7,11 @@
 h1 {
   text-align: center;
 }
+
+.imageStyle {
+  background-image: url("../assets/someImg.jpg");
+  background-size: cover;
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}

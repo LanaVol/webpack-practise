@@ -29,7 +29,35 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        // use: ["style-loader", "css-loader"],
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|svg|jpeg|gif)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "images",
+            },
+          },
+        ],
+        // loader: "file-loader",
+        // options: {
+        //   name: "[name].[ext]",
+        //   outputPath: "images",
+        // },
       },
     ],
   },
