@@ -15,6 +15,7 @@ module.exports = {
   output: {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
+    assetModuleFilename: "images/[name][ext]",
   },
   // плагіни
   plugins: [
@@ -36,23 +37,24 @@ module.exports = {
           },
           {
             loader: "css-loader",
-            options: {
-              url: false,
-            },
           },
         ],
       },
       {
         test: /\.(png|jpg|svg|jpeg|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "images",
-            },
-          },
-        ],
+        type: "asset/resource",
+        generator: {
+          filename: "images/[name][ext]",
+        },
+        // use: [
+        //   {
+        //     loader: "file-loader",
+        //     options: {
+        //       name: "[name].[ext]",
+        //       outputPath: "images",
+        //     },
+        //   },
+        // ],
         // loader: "file-loader",
         // options: {
         //   name: "[name].[ext]",
