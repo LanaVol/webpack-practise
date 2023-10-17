@@ -61,6 +61,13 @@ module.exports = {
         //   outputPath: "images",
         // },
       },
+      {
+        test: /\.(ttf|woff|woff2|eot)$/,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
+        },
+      },
     ],
   },
 };

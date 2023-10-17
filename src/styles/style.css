@@ -1,3 +1,8 @@
+@import "./tthoves.css";
+body {
+  font-family: "TTHoves-Bold", sans-serif;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
