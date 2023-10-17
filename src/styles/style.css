@@ -1,4 +1,6 @@
+@import "~normalize.css";
 @import "./tthoves.css";
+
 body {
   font-family: "TTHoves-Bold", sans-serif;
 }

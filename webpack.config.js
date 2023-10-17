@@ -46,6 +46,7 @@ module.exports = {
         generator: {
           filename: "images/[name][ext]",
         },
+        // file-loader using with webpack version earlier then 5
         // use: [
         //   {
         //     loader: "file-loader",
@@ -55,11 +56,6 @@ module.exports = {
         //     },
         //   },
         // ],
-        // loader: "file-loader",
-        // options: {
-        //   name: "[name].[ext]",
-        //   outputPath: "images",
-        // },
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
