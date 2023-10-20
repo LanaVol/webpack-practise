@@ -17,6 +17,14 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "images/[name][ext]",
   },
+  resolve: {
+    // формати файлів, які вказуються тут можна не конкретизувати в відповідних імпортах в файлах; якщо ж вказати путстий масив то для webpack формати файлів які він розуміє по замовчуванню "анулються"
+    extensions: [".js", ".json", ".png"],
+    // скорочення-шаблони для шляхів до файлів, що можуть спростити синтаксис імпортів файлів
+    alias: {
+      "@assets": path.resolve(__dirname, "src/assets"),
+    },
+  },
   // плагіни
   plugins: [
     new HTMLWebpackPlugin({
