@@ -64,6 +64,10 @@ module.exports = {
           filename: "fonts/[name][ext]",
         },
       },
+      {
+        test: /\.xml$/,
+        use: ["xml-loader"],
+      },
     ],
   },
 };
