@@ -72,7 +72,16 @@ module.exports = {
         test: /\.html$/,
         loader: "html-loader",
         options: {
-          sources: true,
+          sources: {
+            list: [
+              "...",
+              {
+                tag: "img",
+                attribute: "data-src",
+                type: "src",
+              },
+            ],
+          },
         },
       },
     ],
