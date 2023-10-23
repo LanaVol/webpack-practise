@@ -3,7 +3,7 @@ import json from "@assets/json";
 import img from "@assets/someImg.jpg";
 import imagePng from "@assets/youTube";
 import xml from "@assets/data.xml";
-import "./styles/style.css";
+import "./styles/style.scss";
 
 const post = new Post("Webpack Post Title", imagePng);
 

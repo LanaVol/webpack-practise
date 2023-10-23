@@ -1,6 +1,7 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -16,6 +17,7 @@ module.exports = {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "images/[name][ext]",
+    clean: true,
   },
   resolve: {
     // формати файлів, які вказуються тут можна не конкретизувати в відповідних імпортах в файлах; якщо ж вказати путстий масив то для webpack формати файлів які він розуміє по замовчуванню "анулються"
@@ -31,20 +33,30 @@ module.exports = {
       // шлях до відповідного файлу html з контентом
       template: "./index.html",
     }),
-    new CleanWebpackPlugin(),
+
+    new MiniCssExtractPlugin(),
   ],
+
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
+
   module: {
     // масив об'єктів-лоадерів
     rules: [
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         // use: ["style-loader", "css-loader"],
         use: [
           {
-            loader: "style-loader",
+            // loader: "style-loader",
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
           },
         ],
       },
