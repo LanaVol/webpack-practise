@@ -2,6 +2,7 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -38,8 +39,17 @@ module.exports = {
       // шлях до відповідного файлу html з контентом
       template: "./index.html",
     }),
-
     new MiniCssExtractPlugin(),
+
+    // копіювання файлів з одного місця в інше
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/favicon.ico"),
+          to: path.resolve(__dirname, "dist"),
+        },
+      ],
+    }),
   ],
 
   optimization: {
