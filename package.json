@@ -39,6 +39,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "jquery": "^3.7.1",
     "normalize.css": "^8.0.1"
   }
 }

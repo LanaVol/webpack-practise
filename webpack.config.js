@@ -39,6 +39,10 @@ module.exports = {
 
   optimization: {
     minimizer: [new CssMinimizerPlugin()],
+    // оптимызація (фінальної збірки) рішення підключення додаткових бібліотек і відсутність дублювання при імпортах (спільну частину коду бібліотеки буде поміщено в файл vendors в dist)
+    splitChunks: {
+      chunks: "all",
+    },
   },
 
   module: {
