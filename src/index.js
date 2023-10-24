@@ -7,7 +7,7 @@ import xml from "@assets/data.xml";
 import "./styles/style.scss";
 
 const post = new Post("Webpack Post Title", imagePng);
-$("pre").html(post.toString());
+$("pre").addClass("code").html(post.toString());
 
 console.log("JSON:", json);
 console.log("XML:", xml);

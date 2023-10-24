@@ -12,6 +12,11 @@ module.exports = {
     main: "./index.js",
     analytics: "./analytics.js",
   },
+
+  devServer: {
+    static: "./dist",
+    port: 4200,
+  },
   // після збирання всі скрипти будуть зібрані і поміщені в даний файл(-и) за даною адресою
   output: {
     filename: "[name].[contenthash].js",
@@ -39,10 +44,12 @@ module.exports = {
 
   optimization: {
     minimizer: [new CssMinimizerPlugin()],
-    // оптимызація (фінальної збірки) рішення підключення додаткових бібліотек і відсутність дублювання при імпортах (спільну частину коду бібліотеки буде поміщено в файл vendors в dist)
+    // оптимізація (фінальної збірки) рішення підключення додаткових бібліотек і відсутність дублювання при імпортах (спільну частину коду бібліотеки буде поміщено в файл vendors в dist)
     splitChunks: {
       chunks: "all",
     },
+
+    runtimeChunk: "single",
   },
 
   module: {
