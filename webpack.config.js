@@ -28,7 +28,7 @@ module.exports = {
   // вхідний файл, що вказує з якого місця webpack має почати
   entry: {
     main: "./index.js",
-    analytics: "./analytics.js",
+    analytics: "./analytics.ts",
   },
 
   devServer: {
@@ -155,6 +155,17 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
+            plugins: [],
+          },
+        },
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-typescript"],
             plugins: [],
           },
         },
