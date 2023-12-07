@@ -21,13 +21,26 @@ const optimization = () => {
   return config;
 };
 
+const babelOptions = (preset) => {
+  const options = {
+    presets: ["@babel/preset-env"],
+    plugins: [],
+  };
+
+  if (preset) {
+    options.presets.push(preset);
+  }
+
+  return options;
+};
+
 module.exports = {
   context: path.resolve(__dirname, "src"),
   // режим розробки
   mode: "development",
   // вхідний файл, що вказує з якого місця webpack має почати
   entry: {
-    main: "./index.js",
+    main: "./index.jsx",
     analytics: "./analytics.ts",
   },
 
@@ -148,26 +161,31 @@ module.exports = {
           },
         },
       },
+
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-            plugins: [],
-          },
+          options: babelOptions(),
         },
       },
+
       {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-typescript"],
-            plugins: [],
-          },
+          options: babelOptions("@babel/preset-typescript"),
+        },
+      },
+
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: babelOptions("@babel/preset-react"),
         },
       },
     ],
