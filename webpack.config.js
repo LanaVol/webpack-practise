@@ -54,7 +54,7 @@ module.exports = {
       "@assets": path.resolve(__dirname, "src/assets"),
     },
   },
-  // ************************************плагіни
+  // ПЛАГІНИ
   plugins: [
     new HTMLWebpackPlugin({
       // шлях до відповідного файлу html з контентом
@@ -80,17 +80,8 @@ module.exports = {
   ],
 
   optimization: optimization(),
-  // optimization: {
-  //   minimizer: [new CssMinimizerPlugin()],
-  //   // оптимізація (фінальної збірки) рішення підключення додаткових бібліотек і відсутність дублювання при імпортах (спільну частину коду бібліотеки буде поміщено в файл vendors в dist)
-  //   splitChunks: {
-  //     chunks: "all",
-  //   },
 
-  //   runtimeChunk: "single",
-  // },
-
-  // *******************************************лоадери
+  // ЛОАДЕРИ
   module: {
     // масив об'єктів-лоадерів
     rules: [
@@ -98,7 +89,6 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           {
-            // loader: "style-loader",
             loader: MiniCssExtractPlugin.loader,
             options: {},
           },
@@ -155,6 +145,17 @@ module.exports = {
                 type: "src",
               },
             ],
+          },
+        },
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+            plugins: [],
           },
         },
       },

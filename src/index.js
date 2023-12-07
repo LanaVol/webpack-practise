@@ -5,6 +5,7 @@ import img from "@assets/someImg.jpg";
 import imagePng from "@assets/youTube";
 import xml from "@assets/data.xml";
 import "./styles/style.scss";
+import "./babel";
 
 const post = new Post("Webpack Post Title", imagePng);
 $("pre").addClass("code").html(post.toString());
