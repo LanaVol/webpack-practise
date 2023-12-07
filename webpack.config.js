@@ -67,6 +67,7 @@ module.exports = {
       "@assets": path.resolve(__dirname, "src/assets"),
     },
   },
+
   // ПЛАГІНИ
   plugins: [
     new HTMLWebpackPlugin({
@@ -93,6 +94,8 @@ module.exports = {
   ],
 
   optimization: optimization(),
+
+  devtool: "source-map",
 
   // ЛОАДЕРИ
   module: {
